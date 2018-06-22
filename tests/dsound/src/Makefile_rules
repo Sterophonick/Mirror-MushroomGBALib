@@ -1,0 +1,129 @@
+# -----------------------------------------------------------------------------
+# Mushroom Makefile_rules
+# List of rules used to make projects
+#
+# You shouldn't need to change anything in this file
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# Files
+# -----------------------------------------------------------------------------
+
+O_FILES_C_FULLPATH = $(addprefix $(O_DIR)/, $(O_FILES))
+O_FILES_FULLPATH   = $(O_DIR)/crt0.o $(O_FILES_C_FULLPATH)
+
+FINAL = $(ROM_DIR)/$(PROJECT_NAME).gba
+
+ifeq ($(DATA),YES)
+	DATA_FILE = $(O_DIR)/data.a
+endif
+
+# -----------------------------------------------------------------------------
+# Flags
+# -----------------------------------------------------------------------------
+
+ASFLAGS      = -mthumb-interwork
+CFLAGS       = $(INC_DIRS) -mthumb -mthumb-interwork -std=c99 -Wall -pedantic
+LDFLAGS      = $(LIB_DIRS) -T$(LNKSCRIPT_DIR)/lnkscript $(LIBS)
+
+DATA_CFLAGS  = -mthumb -mthumb-interwork -w
+GFX2GBAFLAGS = -fsrc -o$(O_DIR) -q
+
+ifdef TITLE
+	FUGBARFLAGS += -t $(TITLE)
+endif
+ifdef GAMECODE
+	FUGBARFLAGS += -g $(GAMECODE)
+endif
+ifdef MAKERCODE
+	FUGBARFLAGS += -m $(MAKERCODE)
+endif
+ifdef UNITCODE
+	FUGBARFLAGS += -u $(UNITCODE)
+endif
+ifdef DEVICETYPE
+	FUGBARFLAGS += -d $(DEVICETYPE)
+endif
+ifdef MASKROM
+	FUGBARFLAGS += -r $(MASKROM)
+endif
+ifdef PADDATA
+	FUGBARFLAGS += -f $(PADDATA)
+endif
+ifeq ($(PADDING), YES)
+	FUGBARFLAGS += -p
+endif
+
+# -----------------------------------------------------------------------------
+# Create the ROM
+# -----------------------------------------------------------------------------
+
+all : $(FINAL)
+	@echo ">>> Done"
+
+$(FINAL) : $(ELF_DIR)/$(PROJECT_NAME).elf
+	@echo ">>> Object copying"
+	@$(OBJCOPY) -O binary $< $@
+
+$(ELF_DIR)/$(PROJECT_NAME).elf : $(O_FILES_FULLPATH) $(DATA_FILE) ../data/lo1234.o
+	@echo ">>> Linking"
+	@$(LD) $^ -o$@ $(LDFLAGS)
+
+$(O_FILES_C_FULLPATH) : $(O_DIR)/%.o : $(SRC_DIR)/%.c
+	@echo ">>> Compiling ($(<F) -> $(@F))"
+	@$(CC) -c $(CFLAGS) $< -o$@
+
+$(O_DIR)/crt0.o : $(CRT_DIR)/crt0.S
+	@echo ">>> Assembling ($(<F) -> $(@F))"
+	@$(AS) $(ASFLAGS) $< -o$@
+
+$(CRT_DIR)/crt0.S :
+
+# -----------------------------------------------------------------------------
+# Data
+# -----------------------------------------------------------------------------
+
+$(DATA_FILE) : $(DATA_O_FILES_FULLPATH)
+	@$(AR) rcs $@ $^
+
+$(DATA_O_FILES_FULLPATH) : %.o : %.c
+	@$(CC) -c $(DATA_CFLAGS) $< -o$@
+
+# -----------------------------------------------------------------------------
+# Other Targets
+# -----------------------------------------------------------------------------
+
+.PHONY : clean run flash doc info fix
+
+clean :
+	@echo ">>> Removing output and temporary files"
+	@-$(RM) $(O_DIR)/*.o
+	@-$(RM) $(ELF_DIR)/$(PROJECT_NAME).elf
+	@-$(RM) $(FINAL)
+ifeq ($(DATA),YES)
+	@-$(RM) $(DATA_FILE)
+	@-$(RM) $(DATA_CLEAN_FILES_FULLPATH)
+endif
+	@echo ">>> Done"
+
+run :
+	@$(EMU) $(FINAL)
+
+flash :
+	@echo ">>> Flashing ROM to cartridge"
+	@$(FLASH) -p $(FINAL)
+	@echo ">>> Done"
+
+doc :
+	@echo ">>> Generating documentation"
+	@$(DOXYGEN)
+	@echo ">>> Done"
+
+info :
+	@$(FUGBAR) -i $(FINAL)
+
+fix :
+	@echo ">>> Fixing ROM size and header"
+	@$(FUGBAR) -v $(FUGBARFLAGS) $(FINAL)
+	@echo ">>> Done"
+

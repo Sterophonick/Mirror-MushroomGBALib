@@ -1,0 +1,62 @@
+EM { font-style: normal; font-weight: bold; color: green; margin-right: 10px; }
+H1 { text-align: center; }
+CAPTION { font-weight: bold }
+A.qindex {}
+A.qindexRef {}
+A.el { text-decoration: none; font-weight: bold }
+A.elRef { font-weight: bold }
+A.code { text-decoration: none; font-weight: normal; color: #4444ee }
+A.codeRef { font-weight: normal; color: #4444ee }
+A:hover { text-decoration: none; }
+DL.el { margin-left: -1cm; }
+
+TABLE[cellpadding="2"] { border-top: 1px solid; border-left: 1px solid; background-color: #eeeeee; }
+TABLE[cellspacing="5"] { margin-bottom: 20px; border-spacing: 0px; }
+DL { margin-top: none; margin-left: none; margin-right: none; margin-bottom: 20px; }
+DIV.fragment { width: 100%; border: none; background-color: #eeeeee }
+DIV.ah { background-color: black; font-weight: bold; color: #ffffff; margin-bottom: 3px; margin-top: 3px }
+
+TD.md {
+   font-weight: bold;
+   font-size: 12pt;
+   background-color: #eeeeee;
+}
+
+TD.mdname1 { margin: none; font-weight: bold; color: green; }
+TD.mdname { margin: none; font-weight: bold; color: green; width: 600px; }
+DIV.groupHeader { margin-left: 16px; margin-top: 12px; margin-bottom: 6px; font-weight: bold }
+DIV.groupText { margin-left: 16px; font-style: italic; font-size: smaller }
+
+BODY { background: white; margin-left: 30px; margin-right: 40px; }
+
+TD.indexkey { 
+   background-color: #eeeeff; 
+   font-weight: bold; 
+   padding-right  : 10px; 
+   padding-top    : 2px; 
+   padding-left   : 10px; 
+   padding-bottom : 2px; 
+   margin-left    : 0px; 
+   margin-right   : 0px; 
+   margin-top     : 2px; 
+   margin-bottom  : 2px  
+}
+TD.indexvalue { 
+   background-color: #eeeeff; 
+   font-style: italic; 
+   padding-right  : 10px; 
+   padding-top    : 2px; 
+   padding-left   : 10px; 
+   padding-bottom : 2px; 
+   margin-left    : 0px; 
+   margin-right   : 0px; 
+   margin-top     : 2px; 
+   margin-bottom  : 2px  
+}
+span.keyword       { color: #008000 }
+span.keywordtype   { color: #604020 }
+span.keywordflow   { color: #e08000 }
+span.comment       { color: #800000 }
+span.preprocessor  { color: #806020 }
+span.stringliteral { color: #002080 }
+span.charliteral   { color: #008080 }

@@ -1,0 +1,146 @@
+<html>
+  <head>
+    <title>Mushroom GBALib</title>
+  </head>
+  <body>
+
+    <h1>Mushroom GBALib 0.7</h1>
+    <a href="http://mushroom.sourceforge.net">http://mushroom.sourceforge.net</a><br>
+	<br>
+    <b>Created by:</b><br>
+	Mark Holloway &lt;<a href="mailto:molasses@ihug.com.au">molasses@ihug.com.au</a>&gt;<br>
+	David Voswinkel<br>
+    <br>
+
+	<a href="#overview">Overview</a> |
+	<a href="#requirements">Requirements</a> |
+	<a href="#gettingstarted">Getting Started</a> |
+	<a href="#newproject">Creating a New Project</a> |
+	<a href="#documentation">Documentation</a> |
+	<a href="#license">License</a> |
+	<a href="#thanks">Thanks</a><br>
+
+    <a name="overview"></a><h2>Overview</h2>
+    Mushroom is a simple C library for the Nintendo Game Boy Advance.
+    It provides a thin layer over the GBA hardware to allow for maximum
+    control and flexibility in development.<br>
+    <br>
+    Mushroom GBALib is public domain. See <a href="#license">below</a>
+    for details.<br>
+    <br>
+
+    <a name="requirements"></a><h2>Requirements</h2>
+	Most of the software listed here can be found at <a href="http://www.gbadev.org">http://www.gbadev.org</a>.<br>
+	<br>
+	<b>Required</b><br>
+    GNU/Linux (or other Unix (Windows may require more makefile editing))<br>
+    <a href="http://devkitadv.sourceforge.net">DevKitAdvance</a><br>
+	<br>
+	<b>Recommended</b><br>
+    gfx2gba<br>
+    fuGBAr<br>
+    VisualBoyAdvance<br>
+    Flash Linker Advance<br>
+    Doxygen<br>
+    <br>
+
+    <a name="gettingstarted"></a><h2>Getting Started</h2>
+    Extract the Mushroom package to a new directory on your computer (you
+    have probably already done this).<br>
+    <br>
+	Edit &lt;mushroom_dir&gt;/build/Makefile_defines<br>
+	Change the following variables to match your system:<br>
+	GCC_VERSION, GCC_DIR, EMU<br>
+	<br>
+	Enter the directory &lt;mushroom_dir&gt;/samples/newproject/src<br>
+	Type "<tt><b>make</b></tt>"<br>
+	The project should compile.<br>
+	<br>
+	Then type "<tt><b>make run</b></tt>"<br>
+	This should run the GBA ROM in the emulator specified in Makefile_defines.<br>
+    <br>
+	You will also have to make sure you have gfx2gba installed and specified in
+	Makefile_defines (the GFX2GBA variable). This is because the other
+	samples require gfx2gba to convert bitmaps to C code.<br>
+	<br>
+
+    <a name="newproject"></a><h2>Creating A New Project</h2>
+	See <a href="#gettingstarted">Getting Started</a> first to make sure you
+	can compile ok.<br>
+	<br>
+	Create a directory anywhere on your computer with the name of your project.<br>
+	<br>
+	Copy the contents of &lt;mushroom_dir&gt;/samples/newproject into your project directory.<br>
+	<br>
+	Rename the new.c file in &lt;project_dir&gt;/src to the same name as your
+	project directory.<br>
+	<br>
+	Edit &lt;project_dir&gt;/src/Makefile and change PROJECT_NAME to the
+	name of your project directory.<br>
+	<br>
+	Enter the directory &lt;project_dir&gt;/src<br>
+	Type "<tt><b>make</b></tt>"<br>
+	The project should compile.<br>
+	<br>
+	Then type "<tt><b>make run</b></tt>"<br>
+	This should run the GBA ROM in the emulator specified in Makefile_defines.<br>
+    <br>
+    Edit your source code and compile again (repeat indefinately).<br>
+    <br>
+
+    <a name="documentation"></a><h2>Documentation</h2>
+    <a href="doc/index.html">Mushroom API Reference</a><br>
+    This lists all the functions in Mushroom. However, it doesn't list
+    all the macros. Check the Mushroom header files for macros if you
+    need something more low level.<br>
+    <br>
+    <a href="http://www.cs.rit.edu/~tjh8300/CowBite/CowBiteSpec.htm">CowBite Virtual Hardware Specifications</a><br>
+    This is probably the best freely available reference for the GBA.
+    Mushroom takes most of it's naming conventions from this reference.<br>
+    <br>
+
+    <a name="license"></a><a name="license"></a><h2>License</h2>
+    Mushroom GBALib is public domain. You may use it or any part
+    of it however you want. Mushroom GBALib is free for commercial
+    and non-commercial use. You are not required to include any
+    copyright notices or even give credit to the original author.<br>
+    Have fun.<br>
+    <br>
+
+    <a name="thanks"></a><h2>Thanks</h2>
+    <b>Jason Wilkins</b><br>
+    DevKitAdvance<br>
+    <a href="http://devkitadv.sourceforge.net">http://devkitadv.sourceforge.net</a><br>
+    <br>
+    <b>Forgotten</b><br>
+    VisualBoyAdvance<br>
+    <a href="http://vboy.emuhq.com">http://vboy.emuhq.com</a><br>
+    <br>
+    <b>Jeff Frohwein</b><br>
+    Flash Linker Advance, and everything else he does<br>
+    <a href="http://www.devrs.com/gba">http://www.devrs.com/gba</a><br>
+    <br>
+    <b>Tom Happ</b><br>
+    CowBite GBA Doc<br>
+    <a href="http://cowbite.emuunlim.com">http://cowbite.emuunlim.com</a><br>
+    <br>
+    <b>Markus</b><br>
+    gfx2gba<br>
+    <br>
+    <b>DANZiG</b><br>
+    fuGBAr<br>
+    <a href="http://www.napalm-x.com">http://www.napalm-x.com</a><br>
+    <br>
+    <b>BeLogic Software Ltd.</b><br>
+    Cool GBA sound docs and examples<br>
+    <a href="http://www.belogic.com">http://www.belogic.com</a><br>
+    <br>
+    <b>MrMr[iCE]</b><br>
+    GNU Makefiles tutorial<br>
+    <br>
+    <a href="http://www.gbadev.org">http://www.gbadev.org</a><br>
+    <a href="http://www.devrs.com/gba">http://www.devrs.com/gba</a><br>
+    <br>
+
+  </body>
+</html>

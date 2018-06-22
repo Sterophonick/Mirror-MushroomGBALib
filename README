@@ -1,0 +1,119 @@
+
+ Mushroom GBALib 0.7
+ ------------------------------------------------------------------------------
+ http://mushroom.sourceforge.net
+ Created by: Mark Holloway <molasses@ihug.com.au>
+             David Voswinkel
+
+
+ OVERVIEW ---------------------------------------------------------------------
+
+ Mushroom is a simple C library for the Nintendo Game Boy Advance.
+ It provides a thin layer over the GBA hardware to allow for maximum
+ control and flexibility in development.
+
+ Mushroom GBALib is public domain. See below for details.
+
+
+ USING MUSHROOM ---------------------------------------------------------------
+
+ See mushroom.html for information on how to create a new project with
+ Mushroom.
+
+
+ COMPILING THE LIBRARY --------------------------------------------------------
+
+ Requirements:
+     DevKitAdvance
+     gfx2gba
+     Doxygen
+     GNU/Linux (or other Unix (Windows may require more makefile editing))
+
+ Set your GCC_DIR in the makefile:
+ <mushroom>/build/Makefile_defines
+
+ Enter the directory <mushroom>/src and type:
+
+ make
+
+ The library (libmushroom.a) should then be created in
+ <mushroom>/lib.
+
+
+ OTHER MAKE RULES -------------------------------------------------------------
+
+ make doc                 Generate documentation
+ make dist                Clean, compile, make docs and make a tarball
+ make clean               Remove lib and .o files
+ make distclean           Remove all previously generated files
+ make tests               Compile all the tests in the test suite
+ make runtests            Run all the tests one after the other
+ make cleantests          Remove all generated test suite files
+
+
+ DIRECTORY STRUCTURE ----------------------------------------------------------
+
+ <mushroom>/
+     build/
+         doxygen/         Files for creating documentation
+         temp/            Temporary files used in compiling
+
+     data/                Graphics data. Default font
+     doc/                 Mushroom API Documentation
+     include/
+         mushroom/        Mushroom header files
+
+     lib/                 The library (libmushoom.a)
+     samples/             Sample Mushroom projects
+     src/                 The source files of Mushroom
+     tests/               Mushroom test suite
+
+     COPYING              License information for Mushroom
+     NEWS                 List of changes to Mushroom
+     README               Some kind of attempt at documentation
+
+
+ LICENSE ----------------------------------------------------------------------
+
+ Mushroom GBALib is public domain. You may use it or any part
+ of it however you want. Mushroom GBALib is free for commercial
+ and non-commercial use. You are not required to include any
+ copyright notices or even give credit to the original author.
+ Have fun.
+
+
+ THANKS -----------------------------------------------------------------------
+
+ Jason Wilkins
+     DevKitAdvance
+     http://devkitadv.sourceforge.net
+
+ Forgotten
+     VisualBoyAdvance
+     http://vboy.emuhq.com
+
+ Jeff Frohwein
+     Flash Linker Advance, and everything else he does
+     http://www.devrs.com/gba
+
+ Tom Happ
+     CowBite GBA Doc
+     http://cowbite.emuunlim.com
+
+ Markus
+     gfx2gba
+
+ DANZiG
+     fuGBAr
+     http://www.napalm-x.com
+
+ BeLogic Software Ltd.
+     Cool GBA sound docs and examples
+     http://www.belogic.com
+
+ MrMr[iCE]
+     GNU Makefiles tutorial
+
+ http://www.gbadev.org
+ http://www.devrs.com/gba
+

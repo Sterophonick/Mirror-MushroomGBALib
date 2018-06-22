@@ -1,0 +1,93 @@
+Mushroom 0.7
+2004-05-19
+Bug Fixes, Minor Features Added
+
+- Fixed: bug with DMASET16() and DMASET32() not setting the right value
+- Fixed: wait_vbl() no longer gets stuck in a loop when using the VBL interrupt
+- Added: random number generator - math_rand()
+- Added: debug functions - oam_dump(), hexdump(), bitdump(), dprint()
+- Added: macros - PX_TO_TL(), TL_TO_PX(), PX_MOD_TL(), ABS(), SGN()
+- Added: functions - get_oam_width_tl(), get_oam_height_tl()
+- Added: functions - get_oam_width_px(), get_oam_height_px()
+- Added: function - get_oam_tilevol()
+- Added: function - hide_objs()
+- Added: macros - SET_DISP_BG(), GET_DISP_BG()
+- Added: macros - SET_DISP_WIN(), GET_DISP_WIN()
+- Renamed: function - memfree() to get_ewram_avail()
+
+
+Mushroom 0.6
+2004-02-29
+Minor Features Added
+
+- Added: HUD functions (thanks David Voswinkel)
+- Added: defines - IN_EWRAM, IN_IWRAM, FUNC_IN_IWRAM, PACKED, ALIGN4
+- Added: DMA macros - DMASET16(), DMASET32()
+- Added: Direct Sound macros - sounda_play(), soundb_play(),
+         sounda_stop(), soundb_stop(), sound_start_timer(), sound_stop_timer(),
+         set_sounda(), set_soundb()
+- Updated: copy_bgmap() is about 3x faster
+
+
+Mushroom 0.5
+2003-11-29
+Major Updates, Speedup
+
+- Added: math functions and macros (thanks David Voswinkel)
+- Added: set_bg() macro
+- Added: DMACPY16() and DMACPY32() macros
+- Changed: majority of inline functions are now macros
+- Changed: IRQ master func is now handled by crt0.S
+- Changed: cleaned up directory structure
+
+
+Mushroom 0.4
+2003-07-26
+First Public Release
+
+- Added: enable_irq(), disable_irq()
+- Added: clear_irq_funcs()
+- Fixed: irq_master() now handles multiple interrupts
+- Fixed: removed hardcoded number of font tiles in dtext_init()
+
+
+Mushroom 0.3
+2003-06-30
+Internal Milestone
+
+- Added: SaveRAM functions
+- Added: profiling functions
+- Added: memfree() function
+- Added: dtext_init() function
+- Added: bg scrolling now writes to a buffer so values can be read back
+- Added: get_bg_hofs(), get_bg_vofs()
+- Added: more characters in standard font
+- Added: support for fugbar ROM fixing
+- Fixed: added casts in copy_bgmap() function
+- Removed: set_dtext_defaults() function
+
+
+Mushroom 0.2
+2003-06-15
+Internal Milestone
+
+- Added: sound functions
+- Added: defines for dmemcpy() channel. CPY_DMA0 CPY_DMA1 ... CPY_MEMCPY
+- Added: define DMA_START_FIFO
+- Added: dtext() macro for printing text on GBA
+- Added: BG_MAPBASE macro
+- Added: BG_TILEBASE macro
+- Added: BG_TILE macro
+- Added: set_map_tile(), get_map_tile(), set_rotmap_tile(), get_rotmap_tile()
+- Added: key... and any_key... functions
+- Added: key irq functions
+- Added: defines REG_WAVE_RAM0, REG_WAVE_RAM1, REG_WAVE_RAM2, REG_WAVE_RAM3
+- Fixed: added code to set_comm_irq() and get_comm_irq()
+- Changed: assert() macro now outputs to GBA instead of console
+- Removed: get_keys() function
+
+
+Mushroom 0.1
+2003-06-04
+First Internal Milestone
+

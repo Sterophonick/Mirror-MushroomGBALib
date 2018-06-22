@@ -1,0 +1,49 @@
+# -----------------------------------------------------------------------------
+# Mushroom Makefile_defines
+# List of defines for directories and executables
+#
+# You will need to change GCC_VERSION and GCC_DIR to match your system, as
+# well as the executables listed below
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# Directories
+# -----------------------------------------------------------------------------
+
+GCC_VERSION   = 3.1
+GCC_DIR       = /home/molasses/Code/gba/tools/devkitadv
+
+SRC_DIR       = $(PROJECT_DIR)/src
+DATA_DIR      = $(PROJECT_DIR)/data
+ROM_DIR       = $(PROJECT_DIR)
+O_DIR         = $(PROJECT_DIR)/build/temp
+ELF_DIR       = $(PROJECT_DIR)/build/temp
+
+CRT_DIR       = $(MUSHROOM_DIR)/build
+LNKSCRIPT_DIR = $(MUSHROOM_DIR)/build
+
+INC_DIRS      = -I$(MUSHROOM_DIR)/include \
+                -I$(PROJECT_DIR)/include
+
+LIB_DIRS      = -L$(GCC_DIR)/lib/gcc-lib/arm-agb-elf/$(GCC_VERSION)/interwork \
+                -L$(GCC_DIR)/arm-agb-elf/lib/interwork \
+                -L$(MUSHROOM_DIR)/lib
+
+LIBS          = -lmushroom -lc -lgcc
+
+# -----------------------------------------------------------------------------
+# Executables
+# -----------------------------------------------------------------------------
+
+AS            = $(GCC_DIR)/bin/arm-agb-elf-as
+CC            = $(GCC_DIR)/bin/arm-agb-elf-gcc
+LD            = $(GCC_DIR)/bin/arm-agb-elf-ld
+OBJCOPY       = $(GCC_DIR)/bin/arm-agb-elf-objcopy
+AR            = $(GCC_DIR)/bin/arm-agb-elf-ar
+RM            = rm
+FUGBAR        = /home/molasses/Code/gba/tools/fugbar/Linux/fugbar
+EMU           = VisualBoyAdvance
+FLASH         = /home/molasses/Code/gba/tools/flgba/fl
+DOXYGEN       = doxygen
+GFX2GBA       = /home/molasses/Code/gba/tools/gfx2gba/gfx2gba
+
